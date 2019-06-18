@@ -11,12 +11,12 @@ module.exports = app => {
  
   //settings
   app.set('port', process.env.PORT || 3000);  
-  app.set('views', path.join(__dirname, 'views'));
+  app.set('views', path.join(__dirname, '../views'));
   app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     partialsDir: path.join(app.get('views'), 'partials'),
     layoutsDir: path.join(app.get('views'), 'layouts'),
-    extName: '.hbs',
+    extname: '.hbs',
     helpers: require('./helpers')
   }))
   
@@ -32,7 +32,7 @@ module.exports = app => {
   routes(app);
   
   //static files
-  app.use('/pubic', express.static(path.join(__dirname, '../public')));
+  app.use('/public', express.static(path.join(__dirname, '../public')));
   
   //errorhandlers
   if ('development' === app.get('env')) {
